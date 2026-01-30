@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semua Produk Tour - Saraya</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="icon" href="assets/img/logo_saraya.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #86B817;
+            --secondary: #FE8800;
+            --light: #F5F5F5;
+            --dark: #14141F;
+        }
+
+        body {
+            font-family: Helvetica, 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding-top: 100px;
+        }
+
+        /* Navbar */
+        .navbar {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.95) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(134, 184, 23, 0.1);
+        }
+
+        .navbar-brand img {
+            width: 70px;
+            height: auto;
+        }
+
+        .btn-home {
+            background: linear-gradient(135deg, var(--primary), #9cd423);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 10px 28px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(134, 184, 23, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(134, 184, 23, 0.4);
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+            background: var(--primary);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .page-title {
+            font-family: Helvetica, 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            /* background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%); */
+            background: white;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .page-subtitle {
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            position: sticky;
+            top: 120px;
+        }
+
+        .filter-title {
+            font-family: Helvetica , 'Montserrat';
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-group {
+            margin-bottom: 25px;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .filter-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-checkbox:hover {
+            padding-left: 10px;
+            color: var(--primary);
+        }
+
+        .filter-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+
+        .price-range-slider {
+            margin-top: 15px;
+        }
+
+        .price-range-slider input[type="range"] {
+            width: 100%;
+            accent-color: var(--primary);
+        }
+
+        .price-display {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .btn-reset-filter {
+            width: 100%;
+            background: #e9ecef;
+            border: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 12px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-reset-filter:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Products Grid */
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .result-count {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .sort-select {
+            border: 2px solid #e9ecef;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sort-select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        /* Product Card - Same as homepage but adjusted */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(134, 184, 23, 0.25);
+        }
+
+        .product-image-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+            /* override any overflow:hidden in existing CSS */
+            padding: 0.25rem;
+            background: transparent;
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            /* show whole image without cropping */
+            max-height: 360px;
+            /* adjust as needed to limit height */
+            display: block;
+            transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1), filter 420ms ease;
+            will-change: transform;
+            transform-origin: center center;
+            backface-visibility: hidden;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--secondary), #ff9d33);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(254, 136, 0, 0.4);
+            z-index: 1;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            z-index: 1;
+        }
+
+        .product-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-category {
+            display: inline-block;
+            background: rgba(134, 184, 23, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-title {
+            font-family: Helvetica, 'Montserrat';
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+            min-height: 55px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 12px;
+        }
+
+        .rating-stars {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+
+        .rating-count {
+            color: #999;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            flex-grow: 1;
+        }
+
+        .product-features {
+            margin: 12px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .feature-item i {
+            color: var(--primary);
+        }
+
+        .product-price-section {
+            border-top: 2px solid #f0f0f0;
+            padding-top: 12px;
+            margin-top: auto;
+        }
+
+        .product-price {
+            /* font-family: 'Playfair Display', serif; */
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: var(--primary);
+        }
+
+        .price-original {
+            font-size: 0.95rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+
+        .price-unit {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .btn-detail {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary), #9cd423);
+            border: none;
+            text-decoration: none !important;
+            color: white;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(134, 184, 23, 0.3);
+        }
+
+        .btn-detail:hover {
+            background: linear-gradient(135deg, var(--secondary), #ff9d33);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(254, 136, 0, 0.4);
+            color: white;
+        }
+
+        .btn-wishlist {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-wishlist:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Pagination */
+        .pagination-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .pagination {
+            gap: 10px;
+        }
+
+        .page-link {
+            border: 2px solid #e9ecef;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .page-link:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .page-item.active .page-link {
+            background: linear-gradient(135deg, var(--primary), #9cd423);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 100%);
+            color: #bbb;
+            padding: 30px 0;
+            margin-top: 80px;
+            border-top: 3px solid var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .filter-section {
+                display: none;
+                border-radius: 18px;
+                padding: 20px;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+                animation: fadeDown 0.3s ease;
+            }
+
+            .filter-section.show {
+                display: block;
+            }
+
+            #toggleFilter {
+                background: linear-gradient(135deg, var(--primary), #9cd423);
+                color: white;
+                font-weight: 600;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(134, 184, 23, 0.35);
+                transition: all 0.3s ease;
+                font-size: 1rem;
+            }
+
+            #toggleFilter:hover {
+                transform: translateY(-2px);
+                background: linear-gradient(135deg, var(--secondary), #ff9d33);
+                box-shadow: 0 7px 20px rgba(254, 136, 0, 0.4);
+                color: #fff;
+            }
+
+            #toggleFilter:active {
+                transform: scale(0.97);
+            }
+
+            @keyframes fadeDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .products-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .product-image-wrapper {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-image {
+                max-height: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-light fixed-top py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logo_saraya.png" alt="Saraya Suci Mulia">
+            </a>
+            <a href="index.html" class="btn btn-home px-4">
+                <i class="bi bi-house-door"></i> Beranda
+            </a>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Semua Paket Tour</h1>
+            <p class="page-subtitle">Temukan destinasi impian Anda dari koleksi lengkap paket tour kami</p>
+        </div>
+
+        <div class="row">
+            <div class="col-12 d-lg-none mb-3">
+                <button class="btn btn-primary w-100 py-2" id="toggleFilter" style="border-radius: 12px;">
+                    <i class="bi bi-funnel me-2"></i> Filter Pencarian
+                </button>
+            </div>
+            <!-- Filter Sidebar -->
+            <div class="col-lg-3 mb-4">
+                <div class="filter-section">
+                    <h3 class="filter-title">
+                        <i class="bi bi-funnel"></i>
+                        Filter Pencarian
+                    </h3>
+
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <div class="filter-label">Tipe Tour</div>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="filter-type" value="open-trip">
+                            <span>Open Trip</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="filter-type" value="private-tour">
+                            <span>Private Tour</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="filter-type" value="premium-tour">
+                            <span>Premium Tour</span>
+                        </label>
+                    </div>
+
+                    <!-- Location Filter -->
+                    <div class="filter-group">
+                        <div class="filter-label">Destinasi</div>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="filter-location" value="jawa-timur">
+                            <span>Jawa Timur</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="filter-location" value="yogyakarta">
+                            <span>Yogyakarta</span>
+                        </label>
+                    </div>
+
+                    <!-- Duration Filter -->
+                    <div class="filter-group">
+                        <div class="filter-label">Durasi</div>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="filter-duration" value="1-3">
+                            <span>1-3 Hari</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" class="filter-duration" value="4-6">
+                            <span>4-6 Hari</span>
+                        </label>
+                        <!-- <label class="filter-checkbox">
+                            <input type="checkbox" class="filter-duration" value="7+">
+                            <span>7+ Hari</span>
+                        </label> -->
+                    </div>
+
+                    <button class="btn-reset-filter" onclick="resetFilters()">
+                        <i class="bi bi-arrow-clockwise me-2"></i>Reset Filter
+                    </button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="col-lg-9">
+                <!-- Products Header -->
+                <div class="products-header">
+                    <div class="result-count">
+                        Menampilkan <strong id="productCount">8</strong> produk
+                    </div>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="default">Urutkan: Default</option>
+                        <option value="price-low">Harga: Terendah</option>
+                        <option value="price-high">Harga: Tertinggi</option>
+                        <option value="rating">Rating Tertinggi</option>
+                        <option value="newest">Terbaru</option>
+                    </select>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="row g-4" id="productsGrid">
+                    <!-- Products akan di-generate oleh JavaScript -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination-wrapper">
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center">
+        <p>&copy; 2025 Saraya Suci Mulia. All Right Reserved.</p>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/628884907865" class="floating-whatsapp" target="_blank"
+        style="position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background: linear-gradient(135deg, #25d366, #20ba5a); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 9999;">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Products Data
+        const products = [
+            {
+                id: 'wisata-yogyakarta',
+                title: 'Wisata Yogyakarta ',
+                category: 'Yogyakarta',
+                type: 'private-tour',
+                location: 'yogyakarta',
+                duration: 1,
+                price: 400000,
+                rating: 5.0,
+                image: 'assets/img/produk/BROSUR2.jpg',
+                description: 'Jelajahi keindahan Yogyakarta melalui pengalaman lengkap: susur sungai seru di Goa Pindul, menikmati panorama malam di HeHa Sky View, bersantai di Gamplang, hingga merasakan suasana unik Bhumi Merapi.',
+                features: ['Hari Menyesuaikan', 'Max. 16 Orang', 'Include Transport + Photo Tour'],
+                badge: 'Private Tour'
+            },
+            {
+                id: 'city-tour',
+                title: 'Tour with Hiace',
+                category: 'City Tour',
+                type: 'private-tour',
+                location: 'jawa-timur',
+                duration: 1,
+                price: 1000000,
+                rating: 5.0,
+                image: 'assets/img/produk/BROSUR1.jpg',
+                description: 'Wisatanya seru dan Fasilitasnya asik banget pakai Hiace yang nyaman dan luas.',
+                features: ['Hari Menyesuaikan', 'Max. 16 Orang', 'Include Transport + Photo Tour'],
+                badge: 'Private Tour',
+            },
+            {
+                id: 'wisata-banyuwangi',
+                title: 'Wisata Banyuwangi',
+                category: 'Jawa Timur',
+                type: 'private-tour',
+                location: 'jawa-timur',
+                duration: 1,
+                price: 500000,
+                rating: 5.0,
+                image: 'assets/img/produk/BROSUR2.jpg',
+                description: 'Jelajahi pesona Banyuwangi: nikmati kejernihan laut dan pasir putih di Tabuhan Island, rasakan suasana magis Hutan De Djawatan yang hijau rimbun, hingga menikmati pengalaman alam liar yang menakjubkan di Sukamade.',
+                features: ['Hari Menyesuaikan', 'Max. 16 Orang', 'Include Transport + Photo Tour'],
+                badge: 'Private Tour'
+            }
+        ];
+
+        let filteredProducts = [...products];
+
+        // Render Products
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            filteredProducts.forEach(product => {
+                let displayPrice = 'Rp ' + product.price.toLocaleString('id-ID');
+                const stars = '★'.repeat(Math.floor(product.rating)) + (product.rating % 1 ? '½' : '');
+
+                grid.innerHTML += `
+            <div class="col-lg-4 col-md-6">
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="${product.image}" alt="${product.title}" class="product-image">
+                        <div class="product-badge">${product.badge}</div>
+                        ${product.discount ? `<div class="discount-badge">${product.discount}</div>` : ''}
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">
+                            <i class="bi bi-geo-alt-fill me-1"></i>${product.category}
+                        </span>
+                        <h3 class="product-title">${product.title}</h3>
+                        <div class="product-rating">
+                            <div class="rating-stars">${stars}</div>
+                        </div>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-features">
+                            ${product.features.map(f => `<div class="feature-item"><i class="bi bi-check-circle"></i><span>${f}</span></div>`).join('')}
+                        </div>
+                        <div class="product-price-section">
+                            <div>
+                                <span class="product-price">${displayPrice}</span>
+                                ${product.originalPrice ? `<span class="price-original">Rp ${product.originalPrice.toLocaleString('id-ID')}</span>` : ''}
+                            </div>
+                            <div class="price-unit"></div>
+                        </div>
+                        <div class="product-actions">
+                            <a href="detailProduk.html?id=${product.id}" class="btn-detail">
+                                <i class="bi bi-eye me-2"></i>Lihat Detail
+                            </a>
+                            <button class="btn-wishlist">
+                                <i class="bi bi-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+            });
+
+            document.getElementById('productCount').textContent = filteredProducts.length;
+        }
+
+
+        // Filter Functions
+        function applyFilters() {
+            const types = Array.from(document.querySelectorAll('.filter-type:checked')).map(cb => cb.value);
+            const locations = Array.from(document.querySelectorAll('.filter-location:checked')).map(cb => cb.value);
+            const durations = Array.from(document.querySelectorAll('.filter-duration:checked')).map(cb => cb.value);
+
+            // 🔽 Jika semua filter kosong → tampilkan semua produk
+            if (types.length === 0 && locations.length === 0 && durations.length === 0) {
+                filteredProducts = [...products];  // tampilkan semua
+                sortProducts();
+                renderProducts();
+                return;
+            }
+
+            // 🔽 Kalau ada filter → lakukan penyaringan
+            filteredProducts = products.filter(product => {
+                const typeMatch = types.length === 0 || types.includes(product.type);
+                const locationMatch = locations.length === 0 || locations.includes(product.location);
+
+                let durationMatch = durations.length === 0 ? true : false;
+                durations.forEach(range => {
+                    if (range === '1-3' && product.duration >= 1 && product.duration <= 3) durationMatch = true;
+                    if (range === '4-6' && product.duration >= 4 && product.duration <= 6) durationMatch = true;
+                    if (range === '7+' && product.duration >= 7) durationMatch = true;
+                });
+
+                return typeMatch && locationMatch && durationMatch;
+            });
+
+            sortProducts();
+            renderProducts();
+        }
+
+        const durationCheckboxes = document.querySelectorAll('.filter-duration');
+
+        durationCheckboxes.forEach(cb => {
+            cb.addEventListener('change', function () {
+                if (this.checked) {
+                    // Disable other checkboxes
+                    durationCheckboxes.forEach(other => {
+                        if (other !== this) {
+                            other.disabled = true;
+                        }
+                    });
+                } else {
+                    // Enable all again when unchecked
+                    durationCheckboxes.forEach(other => {
+                        other.disabled = false;
+                    });
+                }
+
+                applyFilters();
+            });
+        });
+
+
+        // Sort Products
+        function sortProducts() {
+            const sortBy = document.getElementById('sortSelect').value;
+
+            switch (sortBy) {
+                case 'price-low':
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'rating':
+                    filteredProducts.sort((a, b) => b.rating - a.rating);
+                    break;
+                case 'newest':
+                    filteredProducts.sort((a, b) => b.id.localeCompare(a.id));
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function resetFilters() {
+            // Reset semua checkbox → tidak dicentang
+            document.querySelectorAll('.filter-type, .filter-location, .filter-duration')
+                .forEach(cb => cb.checked = false);
+
+            // Reset sorting
+            document.getElementById('sortSelect').value = 'default';
+
+            // Tampilkan semua produk
+            filteredProducts = [...products];
+            renderProducts();
+        }
+
+        // Listen to checkbox change
+        document.querySelectorAll('.filter-type, .filter-location, .filter-duration')
+            .forEach(cb => cb.addEventListener('change', applyFilters));
+
+        // Sorting
+        document.getElementById('sortSelect').addEventListener('change', function () {
+            sortProducts();
+            renderProducts();
+        });
+
+        // Initial render
+        renderProducts();
+
+        // Wishlist Toggle
+        document.addEventListener('click', function (e) {
+            if (e.target.closest('.btn-wishlist')) {
+                const btn = e.target.closest('.btn-wishlist');
+                const icon = btn.querySelector('i');
+                if (icon.classList.contains('bi-heart')) {
+                    icon.classList.remove('bi-heart');
+                    icon.classList.add('bi-heart-fill');
+                    btn.style.background = 'var(--primary)';
+                    btn.style.color = 'white';
+                } else {
+                    icon.classList.remove('bi-heart-fill');
+                    icon.classList.add('bi-heart');
+                    btn.style.background = 'white';
+                    btn.style.color = 'var(--primary)';
+                }
+            }
+        });
+
+        // Initial Render
+        renderProducts();
+        // Toggle Filter untuk HP
+        document.getElementById("toggleFilter").addEventListener("click", () => {
+            document.querySelector(".filter-section").classList.toggle("show");
+        });
+
+    </script>
+</body>
+
+</html>

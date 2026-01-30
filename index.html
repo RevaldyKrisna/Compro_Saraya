@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Saraya Tour & Travel
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="icon" href="assets/img/logo_saraya.png" />
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="assets/lib/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/lib/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/lib/owlcarousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css">
+
+
+
+</head>
+
+<style type="text/css">
+    @media (max-width: 991.98px) {
+        .sticky-top.navbar-light {
+            position: relative;
+            background: #FFFFFF;
+        }
+
+        .navbar-light .navbar-collapse {
+            margin-top: 15px;
+            border-top: 1px solid #DDDDDD;
+        }
+
+        .navbar-light .navbar-nav .nav-link,
+        .sticky-top.navbar-light .navbar-nav .nav-link {
+            padding: 10px 0;
+            margin-left: 0;
+            color: var(--dark) !important;
+        }
+
+        .navbar-light .navbar-brand img {
+            max-height: 70px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .navbar-light {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            border-bottom: 1px solid rgba(256, 256, 256, .1);
+            z-index: 999;
+        }
+
+        .sticky-top.navbar-light {
+            position: fixed;
+            background: #FFFFFF;
+        }
+
+        .navbar-light .navbar-nav .nav-link::before {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 2px;
+            bottom: -1px;
+            left: 50%;
+            background: var(--primary);
+            transition: .5s;
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover::before,
+        .navbar-light .navbar-nav .nav-link.active::before {
+            width: calc(100% - 2px);
+            left: 1px;
+        }
+
+        .navbar-light .navbar-nav .nav-link.nav-contact::before {
+            display: none;
+        }
+    }
+
+
+    /*** Hero Header ***/
+    .hero-header {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('assets/img/hero-hiace.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .hero-header .container {
+        position: relative;
+        z-index: 2;
+    }
+</style>
+
+<body>
+
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+
+    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+        <div class="row gx-0">
+            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center" style="height: 45px;">
+                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Surabaya, East Java
+                        Indonesia</small>
+                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+(62) 8884907865</small>
+                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@saraya.id</small>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end">
+                <div class="d-inline-flex align-items-center" style="height: 45px;">
+
+
+
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2"
+                        href="https://www.instagram.com/wisatasaraya/"><i class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
+                            class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
+                            class="fab fa-brands fa-tiktok"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
+                            class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Topbar End -->
+
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0 " id="home">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="#" class="navbar-brand p-0">
+                <img src="assets/img/logo_saraya.png">
+
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="#about" class="nav-item nav-link" onclick="setActive(this)">About</a>
+                    <a href="#service" class="nav-item nav-link" onclick="setActive(this)">Services</a>
+                    <a href="#armada" class="nav-item nav-link" onclick="setActive(this)">Our Fleet</a>
+                    <a href="#products" class="nav-item nav-link" onclick="setActive(this)">Tour & Open Trip</a>
+                    <a href="#contact" class="nav-item nav-link" onclick="setActive(this)">Contact</a>
+                </div>
+
+            </div>
+        </nav>
+
+        <div class="container-fluid bg-primary py-5 mb-5 hero-header">
+            <div class="container py-5">
+                <div class="row justify-content-center py-5">
+                    <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                        <h1 class="display-3 text-white mb-3 animated slideInDown">Liburan Asik, Acara Epik!</h1>
+                        <p class="fs-4 text-white mb-4 animated slideInDown">Bersama Saraya Suci Mulia Tour</p>
+                        <a href="#about" class="btn-title">Mulai Jelajahi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <!-- About Start -->
+    <div class="container-xxl py-5" id="about">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="assets/img/about.png" alt=""
+                            style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Tentang Kami</h6>
+                    <h1 class="mb-4">Selamat Datang</h1>
+
+                    <p class="mb-4">
+                        Saraya Suci Mulia adalah penyedia layanan perjalanan terpercaya yang menghadirkan pengalaman
+                        wisata
+                        berkualitas bagi setiap pelanggan. Kami berkomitmen memberikan layanan terbaik mulai dari
+                        perencanaan
+                        hingga pelaksanaan perjalanan, dengan fokus pada kenyamanan, keamanan, dan kepuasan wisatawan.
+                    </p>
+                    <p class="mb-4">
+                        Dengan pilihan paket domestik maupun mancanegara, kami merancang perjalanan yang fleksibel,
+                        informatif, dan menarik. Didukung oleh tim profesional serta jaringan luas, Saraya siap menjadi
+                        partner perjalanan yang memudahkanmu menjelajahi berbagai destinasi impian dengan layanan yang
+                        ramah, aman, dan penuh perhatian.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5" id="service">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Layanan</h6>
+                <h1 class="mb-5">Layanan Kami</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s" style="align-items: center;">
+                    <div class="service-item rounded pt-3 align-items-center justify-content-center text-center">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
+                            <h5>Paket Tour & Open Trip</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item rounded pt-3 align-items-center justify-content-center text-center">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-bus text-primary mb-4"></i>
+                            <h5>Sewa Armada</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item rounded pt-3 align-items-center justify-content-center text-center">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-user text-primary mb-4"></i>
+                            <h5>Pemandu Wisata</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item rounded pt-3 align-items-center justify-content-center text-center">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-route text-primary mb-4"></i>
+                            <h5>Custom Trip & Charter</h5>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+    <!-- Armada Start -->
+    <div class="container-xxl py-5" id="armada">
+        <div class="container">
+            <div class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Armada Kami</h6>
+                <h1 class="mb-4">Pilihan Armada</h1>
+            </div>
+
+            <div class="row align-items-center">
+                <!-- Sidebar Nama Armada -->
+                <div class="col-md-3 mb-4 mb-md-0 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="list-group" id="armadaList">
+                        <button class="list-group-item list-group-item-action active" data-armada="commuter">Hiace
+                            Commuter</button>
+                        <button class="list-group-item list-group-item-action" data-armada="premio">Hiace
+                            Premio</button>
+                    </div>
+                </div>
+
+                <!-- Tampilan Gambar Armada -->
+                <div class="col-md-6 text-center position-relative wow fadeInUp" data-wow-delay="0.3s">
+                    <img id="armadaImage" src="assets/img/armada/commuter.png" class="img-fluid fade-element"
+                        alt="Hiace Commuter" style="max-height: 320px;">
+                </div>
+
+                <!-- Deskripsi Armada -->
+                <div class="col-md-3 text-center text-md-start wow fadeInUp" data-wow-delay="0.5s">
+                    <h4 id="armadaTitle" class="fw-bold bg-dark text-white py-2 px-3 rounded fade-element">Hiace
+                        Commuter</h4>
+                    <p id="armadaDesc" class="mt-3 fade-element">
+                        Hiace Commuter berkapasitas besar dan nyaman untuk perjalanan jauh, cocok untuk wisata atau
+                        rombongan keluarga.
+                    </p>
+                    <p class="small fw-semibold bg-dark text-white py-1 px-2 d-inline-block rounded">
+                        *Mobil sesuai pesanan dan ketersediaan
+                    </p>
+                    <a href="detailArmada.html" class="btn btn-primary mt-3 px-4 py-2 rounded-pill wow fadeInUp"
+                        data-wow-delay="0.51s">
+                        Lihat Selengkapnya
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Armada End -->
+
+    <!-- Products Section Start -->
+    <div class="container-xxl py-5" id="products">
+        <div class="container">
+            <div class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Tour & Open Trip</h6>
+                <h1 class="mb-4">Paket Wisata Terbaik</h1>
+                <p class="text-muted">Jelajahi destinasi impian dengan paket tour pilihan kami</p>
+            </div>
+
+            <div class="row g-5 justify-content-center">
+
+                <!-- Product Card 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="assets/img/produk/BROSUR2.jpg" alt="Tour Jogja" class="product-image">
+                            <div class="product-badge">Private Tour</div>
+                            <!-- <div class="discount-badge">-20%</div> -->
+                            <div class="product-overlay"></div>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">
+                                <i class="bi bi-geo-alt-fill me-1"></i>Yogyakarta
+                            </span>
+                            <h3 class="product-title">Wisata Yogyakarta</h3>
+
+                            <div class="product-rating">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <!-- <span class="rating-count">(4.2) 156 reviews</span> -->
+                            </div>
+
+                            <p class="product-description">
+                                Jelajahi keindahan Yogyakarta melalui pengalaman lengkap: susur sungai seru di Goa
+                                Pindul, menikmati panorama malam di HeHa Sky View, bersantai di Gamplang, hingga
+                                merasakan suasana unik Bhumi Merapi.
+                            </p>
+
+                            <div class="product-features">
+                                <div class="feature-item">
+                                    <i class="bi bi-calendar-check"></i>
+                                    <span>Menyesuaikan</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-people"></i>
+                                    <span>Max. 16 Orang</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-camera"></i>
+                                    <span>Include Photo Tour</span>
+                                </div>
+                            </div>
+
+                            <div class="product-price-section">
+                                <div class="price-label">Mulai dari</div>
+                                <div>
+                                    <span class="product-price">Rp 400.000</span>
+                                    <!-- <span class="price-original">Rp 2.0jt</span> -->
+                                </div>
+                                <div class="price-unit">/Pax</div>
+                            </div>
+
+                            <div class="product-actions">
+                                <a href="detailProduk.html?id=wisata-yogyakarta" class="btn-detail">
+                                    <i class="bi bi-eye me-2"></i>Lihat Detail
+                                </a>
+                                <button class="btn-wishlist" title="Tambah ke Wishlist">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="assets/img/produk/BROSUR1.jpg" alt="Tour Hiace" class="product-image">
+                            <div class="product-badge">Private Tour</div>
+                            <div class="product-overlay"></div>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">
+                                <i class="bi bi-geo-alt-fill me-1"></i>Indonesia
+                            </span>
+                            <h3 class="product-title">Tour with Hiace</h3>
+
+                            <div class="product-rating">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <!-- <span class="rating-count">(5.0) 89 reviews</span> -->
+                            </div>
+
+                            <p class="product-description">
+                                Wisatanya seru dan Fasilitasnya asik banget pakai Hiace yang nyaman dan luas.
+                            </p>
+
+                            <div class="product-features">
+                                <div class="feature-item">
+                                    <i class="bi bi-calendar-check"></i>
+                                    <span>Menyesuaikan</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-people"></i>
+                                    <span>Max. 16 Orang</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-truck"></i>
+                                    <span>Include Unit + Driver + BBM</span>
+                                </div>
+                            </div>
+
+                            <div class="product-price-section">
+                                <div class="price-label">Mulai dari</div>
+                                <div>
+                                    <span class="product-price">Rp 1.000.000</span>
+                                    <!-- <span class="price-original">Rp 1.500.000</span> -->
+                                </div>
+                                <div class="price-unit">/Unit</div>
+                            </div>
+
+                            <div class="product-actions">
+                                <a href="detailProduk.html?id=city-tour" class="btn-detail">
+                                    <i class="bi bi-eye me-2"></i>Lihat Detail
+                                </a>
+                                <button class="btn-wishlist" title="Tambah ke Wishlist">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Product Card 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="assets/img/produk/BROSUR2.jpg" alt="Tour Banyuwangi" class="product-image">
+                            <div class="product-badge">Private Tour</div>
+                            <div class="product-overlay"></div>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-category">
+                                <i class="bi bi-geo-alt-fill me-1"></i>Banyuwangi
+                            </span>
+                            <h3 class="product-title">Wisata Banyuwangi</h3>
+
+                            <div class="product-rating">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <!-- <span class="rating-count">(5.0) 67 reviews</span> -->
+                            </div>
+
+                            <p class="product-description">
+                                Jelajahi pesona Banyuwangi: nikmati kejernihan laut dan pasir putih di Tabuhan Island,
+                                rasakan suasana magis Hutan De Djawatan yang hijau rimbun, hingga menikmati pengalaman
+                                alam liar yang menakjubkan di Sukamade.
+                            </p>
+
+                            <div class="product-features">
+                                <div class="feature-item">
+                                    <i class="bi bi-calendar-check"></i>
+                                    <span>Menyesuaikan</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-people"></i>
+                                    <span>Max. 16 Orang</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="bi bi-camera"></i>
+                                    <span>Include Photo Tour</span>
+                                </div>
+                            </div>
+
+                            <div class="product-price-section">
+                                <div class="price-label">Mulai dari</div>
+                                <div>
+                                    <span class="product-price">Rp 500.000</span>
+                                </div>
+                                <div class="price-unit">/Pax</div>
+                            </div>
+
+                            <div class="product-actions">
+                                <a href="detailProduk.html?id=wisata-banyuwangi" class="btn-detail">
+                                    <i class="bi bi-eye me-2"></i>Lihat Detail
+                                </a>
+                                <button class="btn-wishlist" title="Tambah ke Wishlist">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Button -->
+            <div class="view-all-section">
+                <a href="allProduk.html" class="btn-view-all">
+                    Lihat Semua Produk <i class="bi bi-arrow-right-circle ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Products Section End -->
+
+    <!-- Gallery Start -->
+    <div class="container-xxl py-5" id="gallery">
+        <div class="container text-center">
+            <h6 class="section-title bg-white text-center text-primary px-3">Galeri</h6>
+            <h1 class="mb-5">Galeri Kami</h1>
+
+            <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-wrap="true">
+                <div class="carousel-inner">
+
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="gallery-item rounded overflow-hidden">
+                                    <img class="img-fluid gallery-img" src="assets/img/galeri1.jpg" alt="Galeri 1">
+                                    <div class="gallery-overlay">
+                                        <a href="assets/img/galeri1.jpg" data-lightbox="gallery" data-title="Galeri 1">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="gallery-item rounded overflow-hidden">
+                                    <img class="img-fluid gallery-img" src="assets/img/galeri2.jpg" alt="Galeri 1">
+                                    <div class="gallery-overlay">
+                                        <a href="assets/img/galeri2.jpg" data-lightbox="gallery" data-title="Galeri 1">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="gallery-item rounded overflow-hidden">
+                                    <img class="img-fluid gallery-img" src="assets/img/galeri3.jpg" alt="Galeri 1">
+                                    <div class="gallery-overlay">
+                                        <a href="assets/img/galeri3.jpg" data-lightbox="gallery" data-title="Galeri 1">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="gallery-item rounded overflow-hidden">
+                                    <img class="img-fluid gallery-img" src="assets/img/galeri4.jpg" alt="Galeri 1">
+                                    <div class="gallery-overlay">
+                                        <a href="assets/img/galeri4.jpg" data-lightbox="gallery" data-title="Galeri 1">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="gallery-item rounded overflow-hidden">
+                                    <img class="img-fluid gallery-img" src="assets/img/galeri5.jpg" alt="Galeri 1">
+                                    <div class="gallery-overlay">
+                                        <a href="assets/img/galeri5.jpg" data-lightbox="gallery" data-title="Galeri 1">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="gallery-item rounded overflow-hidden">
+                                    <img class="img-fluid gallery-img" src="assets/img/galeri6.jpg" alt="Galeri 1">
+                                    <div class="gallery-overlay">
+                                        <a href="assets/img/galeri6.jpg" data-lightbox="gallery" data-title="Galeri 1">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- slide 3 -->
+                    <div class="carousel-item">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="gallery-item rounded overflow-hidden">
+                                    <img class="img-fluid gallery-img" src="assets/img/pandaan1.JPG" alt="Galeri 1">
+                                    <div class="gallery-overlay">
+                                        <a href="assets/img/pandaan1.JPG" data-lightbox="gallery" data-title="Galeri 1">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="gallery-item rounded overflow-hidden">
+                                    <img class="img-fluid gallery-img" src="assets/img/pandaan2.JPG" alt="Galeri 1">
+                                    <div class="gallery-overlay">
+                                        <a href="assets/img/pandaan2.JPG" data-lightbox="gallery" data-title="Galeri 1">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="gallery-item rounded overflow-hidden">
+                                    <img class="img-fluid gallery-img" src="assets/img/pandaan3.JPG" alt="Galeri 1">
+                                    <div class="gallery-overlay">
+                                        <a href="assets/img/pandaan3.JPG" data-lightbox="gallery" data-title="Galeri 1">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Sebelumnya</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Selanjutnya</span>
+                </button>
+
+                <!-- Indicators -->
+                <div class="carousel-indicators mt-4">
+                    <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true"></button>
+                    <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="2"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Gallery End -->
+
+    <!-- Contact Start -->
+    <div class="container-xxl py-5" id="contact">
+        <div class="container">
+
+            <div class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Kontak Kami</h6>
+                <h1 class="mb-3">Hubungi Lebih Lanjut</h1>
+            </div>
+
+            <div class="row g-5 align-items-start">
+
+                <!-- Info Kontak -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="contact-info d-flex align-items-start mb-4">
+                        <div class="icon-box bg-primary">
+                            <i class="fa fa-map-marker-alt text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary mb-1">Office</h5>
+                            <p class="text-muted mb-0">Gunung Anyar Asri Blok D01-02, Kecamatan Gunung Anyar, Gunung Anyar Tambak, RT 02 RW 06, Surabaya, Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info d-flex align-items-start mb-4">
+                        <div class="icon-box bg-primary">
+                            <i class="fa fa-phone-alt text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary mb-1">Mobile</h5>
+                            <p class="text-muted mb-0">+(62) 8884907865</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info d-flex align-items-start">
+                        <div class="icon-box bg-primary">
+                            <i class="fa fa-envelope-open text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary mb-1">Email</h5>
+                            <p class="text-muted mb-0">info@saraya.id</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps -->
+                <div class="col-lg-8 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="map-container rounded shadow-sm">
+                        <iframe class="w-100 h-100 rounded"
+                            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Gunung%20Anyar%20Asri%20D01-02,%20RT/RW%20002/006,%20Kel.%20Gunung%20Anyar%20Tambak,%20Kec,%20Gunung%20Anyar,%C2%A0Kota%C2%A0Surabaya+(Saraya%20Suci%20Mulia)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                            frameborder="0" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <img src="assets/img/logo_saraya2.png" alt="logo saraya" style="max-width: 200px;">
+                    <p class="small text-muted">
+                        Saraya Suci Mulia menyediakan layanan transportasi profesional dengan armada terbaik,
+                        kenyamanan maksimal, dan pelayanan yang terpercaya.
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-white mt-5">Company</h4>
+                    <a class="btn btn-link" href="#about">About Us</a>
+                    <a class="btn btn-link" href="#service">Services</a>
+                    <a class="btn btn-link" href="#contact">Contact Us</a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-white mt-5">Contact</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Surabaya, East Java Indonesia</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+(62) 8884907879</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@saraya.id</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/wisatasaraya/"><i
+                                class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-tiktok"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">saraya.id</a>, All Right Reserved.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <script>
+        if (window.innerWidth < 768) {
+            const v = document.getElementById('heroVideo');
+            if (v) v.remove(); // atau v.pause(); v.src = '';
+        }
+    </script>
+
+    <script type="text/javascript" src="assets/lib/wow/wow.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/main.js"></script>
+
+    <!-- Bootstrap JS (Load after jQuery) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script type="text/javascript" src="assets/lib/waypoints/waypoints.min.js"></script>
+    <script type="text/javascript" src="assets/lib/tempusdominus/js/moment.min.js"></script>
+    <script type="text/javascript" src="assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <script type="text/javascript" src="assets/lib/easing/easing.min.js"></script>
+
+    <script type="text/javascript">
+
+
+        function setActive(element) {
+
+            const links = document.querySelectorAll('.nav-item.nav-link');
+            links.forEach(link => link.classList.remove('active'));
+
+
+            element.classList.add('active');
+        }
+    </script>
+    <script src="assets/js/armada.js"></script>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/628884907865?text=Halo,%20saya%20ingin%20bertanya%20tentang%20sewa%20armada"
+        class="floating-whatsapp" target="_blank" title="Hubungi kami di WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+</body>
+
+</html>

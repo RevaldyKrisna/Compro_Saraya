@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - Saraya Tour</title>
+
+    <link rel="icon" href="assets/img/logo_saraya.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #86B817;
+            --secondary: #FE8800;
+            --light: #F5F5F5;
+            --dark: #14141F;
+        }
+
+        body {
+            font-family: Helvetica, "Montserrat", Arial, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding-top: 100px;
+        }
+
+        /* Navbar */
+        .navbar {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.95) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar-brand img {
+            width: 70px;
+        }
+
+        .btn-back {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+            padding: 10px 28px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Product Header */
+        .product-header {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .product-badge-detail {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), #ff9d33);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .product-title-detail {
+            /* font-family: 'Playfair Display', serif; */
+            font-weight: 600;
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .product-meta {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+        }
+
+        .meta-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .rating-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .rating-stars-large {
+            color: #ffc107;
+            font-size: 1.5rem;
+        }
+
+        .rating-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .rating-reviews {
+            color: #666;
+        }
+
+        /* Image Gallery */
+        .gallery-section {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .thumbnail-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Product Info */
+        .info-section {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            /* font-family: 'Playfair Display', serif; */
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .description-text {
+            color: #555;
+            line-height: 1.9;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        /* Highlights */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .highlight-card {
+            background: linear-gradient(135deg, rgba(134, 184, 23, 0.05), rgba(254, 136, 0, 0.05));
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(134, 184, 23, 0.15);
+        }
+
+        .highlight-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), #9cd423);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .highlight-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .highlight-text {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Itinerary */
+        .itinerary-item {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .itinerary-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(134, 184, 23, 0.15);
+        }
+
+        .day-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), #9cd423);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .day-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .day-num {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .itinerary-content h4 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .itinerary-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .itinerary-content ul li {
+            padding: 8px 0;
+            color: #666;
+        }
+
+        .itinerary-content ul li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Include/Exclude */
+        .include-exclude-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .include-box,
+        .exclude-box {
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .include-box {
+            background: linear-gradient(135deg, rgba(134, 184, 23, 0.1), rgba(156, 212, 35, 0.05));
+            border: 2px solid rgba(134, 184, 23, 0.3);
+        }
+
+        .exclude-box {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(192, 57, 43, 0.05));
+            border: 2px solid rgba(231, 76, 60, 0.3);
+        }
+
+        .include-exclude-title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .include-box .include-exclude-title {
+            color: var(--primary);
+        }
+
+        .exclude-box .include-exclude-title {
+            color: #e74c3c;
+        }
+
+        .include-exclude-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .include-exclude-list li {
+            padding: 10px 0;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+            color: #555;
+        }
+
+        .include-box li i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .exclude-box li i {
+            color: #e74c3c;
+            font-size: 1.2rem;
+        }
+
+        /* Booking Section */
+        .booking-section {
+            position: sticky;
+            top: 120px;
+            background: white;
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--primary);
+        }
+
+        .price-box {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(134, 184, 23, 0.1), rgba(254, 136, 0, 0.05));
+            border-radius: 20px;
+            margin-bottom: 25px;
+        }
+
+        .price-label {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .price-main {
+            /* font-family: 'Playfair Display', serif; */
+            font-weight: 600;
+            font-size: 3rem;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .price-original-detail {
+            font-size: 1.3rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-top: 5px;
+        }
+
+        .price-per {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .booking-form {
+            margin-top: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-control-custom {
+            width: 100%;
+            padding: 12px 18px;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control-custom:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(134, 184, 23, 0.1);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .qty-btn {
+            width: 45px;
+            height: 45px;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .qty-display {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .total-price-box {
+            background: linear-gradient(135deg, var(--dark), #2c2c3e);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+            color: white;
+        }
+
+        .total-label {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .total-amount {
+            /* font-family: 'Playfair Display', serif; */
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+
+        .btn-book-now {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), #9cd423);
+            border: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 18px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(134, 184, 23, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .btn-book-now:hover {
+            background: linear-gradient(135deg, var(--secondary), #ff9d33);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(254, 136, 0, 0.4);
+        }
+
+        .btn-whatsapp {
+            width: 100%;
+            background: linear-gradient(135deg, #25d366, #20ba5a);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 15px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .guarantee-list {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .guarantee-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            color: #666;
+        }
+
+        .guarantee-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .booking-section {
+                position: relative;
+                top: 0;
+                margin-bottom: 30px;
+            }
+
+            .include-exclude-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .thumbnail-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-title-detail {
+                font-size: 2rem;
+            }
+
+            .main-image {
+                height: 300px;
+            }
+
+            .price-main {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-light fixed-top py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/img/logo_saraya.png" alt="Saraya Suci Mulia">
+            </a>
+            <div class="d-flex gap-2">
+                <a href="allProduk.html" class="btn btn-back px-4">
+                    <i class="bi bi-arrow-left me-2"></i>Kembali
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <!-- Product Header -->
+        <div class="product-header">
+            <span class="product-badge-detail" id="productBadge">Open Trip</span>
+            <h1 class="product-title-detail" id="productTitle">Nama Wisata</h1>
+
+            <div class="product-meta">
+                <div class="meta-item">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span id="productLocation">Indonesia</span>
+                </div>
+                <div class="meta-item">
+                    <i class="bi bi-calendar-check"></i>
+                    <span id="productDuration">Menyesuaikan</span>
+                </div>
+                <div class="meta-item">
+                    <i class="bi bi-people-fill"></i>
+                    <span id="productCapacity">Orang</span>
+                </div>
+            </div>
+
+            <div class="rating-section">
+                <div class="rating-stars-large">
+                    ★★★★★
+                </div>
+                <div class="rating-number">5</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Left Column - Product Info -->
+            <div class="col-lg-8">
+                <!-- Image Gallery -->
+                <div class="gallery-section">
+                    <img src="assets/img/tour-bali.jpg" alt="Main Image" class="main-image" id="mainImage">
+                    <div class="thumbnail-gallery" id="thumbnailGallery">
+                        <!-- thumbnails akan dibuat dinamis oleh JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="info-section" id="descriptionSection">
+                    <h2 class="section-title">Deskripsi Paket</h2>
+                    <div id="descriptionContent"></div>
+                </div>
+
+                <!-- Highlights -->
+                <div class="info-section" id="highlightsSection">
+                    <h2 class="section-title">Yang Akan Anda Dapatkan</h2>
+                    <div class="highlights-grid" id="highlightsContent"></div>
+                </div>
+
+                <!-- Itinerary -->
+                <div class="info-section" id="itinerarySection">
+                    <h2 class="section-title">Rencana Perjalanan</h2>
+                    <div id="itineraryContent"></div>
+                </div>
+
+                <!-- Include & Exclude Section -->
+                <div class="info-section">
+                    <h2 class="section-title">Fasilitas</h2>
+                    <div class="include-exclude-grid">
+                        <!-- Include -->
+                        <div class="include-box">
+                            <div class="include-exclude-title">
+                                <i class="bi bi-check-circle-fill"></i> Sudah Termasuk
+                            </div>
+                            <ul class="include-exclude-list"></ul>
+                        </div>
+
+                        <!-- Exclude -->
+                        <div class="exclude-box">
+                            <div class="include-exclude-title">
+                                <i class="bi bi-x-circle-fill"></i> Tidak Termasuk
+                            </div>
+                            <ul class="include-exclude-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Booking -->
+            <div class="col-lg-4">
+                <div class="booking-section">
+                    <div class="price-box">
+                        <div class="price-label" id="pricePerText">Harga per orang</div>
+                        <div id="priceMain" class="price-main">Rp 3.5jt</div>
+                        <div id="priceOriginal" class="price-original-detail">Rp 4.1jt</div>
+                        <div id="priceDiscount" class="price-per">Hemat 15%!</div>
+                    </div>
+
+                    <div class="booking-form">
+                        <div class="form-group">
+                            <label class="form-label">Tanggal Keberangkatan</label>
+                            <input type="date" class="form-control-custom" id="departureDate">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" id="participantLabel">Jumlah Peserta</label>
+                            <div class="quantity-selector">
+                                <button class="qty-btn" onclick="changeQty(-1)">-</button>
+                                <div class="qty-display" id="quantity">1</div>
+                                <button class="qty-btn" onclick="changeQty(1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control-custom" id="fullName"
+                                placeholder="Masukkan nama lengkap">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">No. WhatsApp</label>
+                            <input type="tel" class="form-control-custom" id="phone" placeholder="08xx xxxx xxxx">
+                        </div>
+
+                        <div class="total-price-box">
+                            <div class="total-label">Total Pembayaran</div>
+                            <div class="total-amount" id="totalPrice">Rp 3.500.000</div>
+                        </div>
+
+                        <button class="btn-book-now" onclick="bookNow()">
+                            <i class="bi bi-calendar-check me-2"></i>Pesan Sekarang
+                        </button>
+
+                        <button class="btn-whatsapp" onclick="contactWhatsApp()">
+                            <i class="bi bi-whatsapp me-2"></i>Konsultasi via WhatsApp
+                        </button>
+                    </div>
+
+                    <div class="guarantee-list">
+                        <div class="guarantee-item">
+                            <i class="bi bi-shield-fill-check"></i>
+                            <span>Garansi 100% Uang Kembali</span>
+                        </div>
+                        <!-- <div class="guarantee-item">
+                            <i class="bi bi-clock-fill"></i>
+                            <span>Gratis Reschedule 1x</span>
+                        </div> -->
+                        <!-- <div class="guarantee-item">
+                            <i class="bi bi-award-fill"></i>
+                            <span>Bersertifikat Resmi</span>
+                        </div> -->
+                        <div class="guarantee-item">
+                            <i class="bi bi-headset"></i>
+                            <span>Customer Service 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center"
+        style="background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 100%); color: #bbb; padding: 30px 0; border-top: 3px solid var(--primary);">
+        <p>&copy; 2025 Saraya Suci Mulia. All Right Reserved.</p>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/628884907865" class="floating-whatsapp" target="_blank"
+        style="position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background: linear-gradient(135deg, #25d366, #20ba5a); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 9999;">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        const productsData = {
+            'wisata-yogyakarta': {
+                title: 'Wisata Yogyakarta',
+                location: 'Yogyakarta, Indonesia',
+                duration: 'Menyesuaikan',
+                capacity: 'Max. 16 Orang',
+                price: 400000,
+                badge: 'Private Tour',
+                images: [
+                    'assets/img/tour/tour-jogja1.jpg',
+                    'assets/img/tour/tour-jogja2.jpg',
+                    'assets/img/tour/tour-jogja3.jpeg',
+                    'assets/img/tour/tour-jogja4.png'
+                ],
+                description: [
+                    'Jelajahi keindahan Yogyakarta melalui pengalaman lengkap: susur sungai seru di Goa Pindul, menikmati panorama malam di HeHa Sky View, bersantai di Gamplang, hingga merasakan suasana unik Bhumi Merapi.',
+                    'Paket ini cocok untuk Anda yang ingin menikmati liburan tanpa repot, lengkap dengan akomodasi, transportasi, dan pemandu wisata profesional.'
+                ],
+                highlights: [
+                    { icon: 'fas fa-cloud-moon', title: 'HeHa Skyview', text: 'Nikmati Suasana Panorama malam di HeHa Sky View.' },
+                    { icon: 'fas fa-water', title: 'Goa Pindul', text: 'Nikmati wisata susur sungai seru di Goa Pindul' },
+                    { icon: 'fas fa-umbrella-beach', title: 'Gamplang', text: 'Seru-seruan dengan banana boat, parasailing, dan snorkeling.' },
+                    { icon: 'fas fa-mountain', title: 'Bhumi Merapi', text: 'Rasakan suasana unik di Bhumi Merapi dengan berbagai wahana menarik.' }
+                ],
+                itinerary: [
+                    {
+                        day: 1,
+                        title: 'Rencana Perjalanan 1 Hari - Jelajah Singkat Yogyakarta',
+                        activities: [
+                            'Meeting Point di Ijjo Cafe',
+                            'Check-in singkat / istirahat (jika diperlukan)',
+                            'Kunjungan ke HeHa Sky View untuk menikmati panorama & kuliner',
+                            'Susur sungai seru di Goa Pindul (cave tubing)',
+                            'Eksplor spot foto dan panorama Gunungkidul',
+                            'Kegiatan pantai ringan di Gamplang (banana boat / snorkeling opsional)',
+                            'Kunjungan singkat ke Bhumi Merapi untuk foto & wahana edukatif',
+                            'Makan sesuai jadwal (siang/malam) dan pengantaran kembali ke titik penjemputan'
+                        ]
+                    }
+                ],
+                includes: [
+                    'Transportasi selama tour (Hiace)',
+                    'Driver Profesional & Berpengalaman',
+                    'BBM untuk perjalanan',
+                ],
+                excludes: [
+                    'Asuransi perjalanan',
+                    'Makan di luar itinerary',
+                    'Pengeluaran pribadi',
+                    'Tip untuk driver & guide'
+                ]
+            },
+
+            'city-tour': {
+                title: 'Wisata City Tour',
+                location: 'Jawa Timur',
+                duration: 'Menyesuaikan',
+                capacity: 'Max. 16 Orang',
+                price: 1000000,
+                originalPrice: null,
+                badge: 'Private Tour',
+                images: [
+                    'assets/img/galeri1.jpg',
+                    'assets/img/galeri2.jpg',
+                    'assets/img/galeri3.jpg',
+                    'assets/img/galeri4.jpg'
+                ],
+                description: [
+                    'Jelajahi keindahan Jawa Timur melalui paket wisata city tour yang mencakup destinasi ikonik, kuliner khas, dan pengalaman budaya yang tak terlupakan.',
+                    'Cocok untuk wisata keluarga, gathering kantor, maupun perjalanan santai.'
+                ],
+                highlights: [
+                    { icon: 'bi bi-geo-alt', title: 'Destinasi Ikonik', text: 'Kunjungan ke spot terkenal seperti Alun-Alun Kota, Jembatan Suramadu, hingga tempat wisata populer lainnya.' },
+                    { icon: 'bi bi-egg-fried', title: 'Kuliner Khas', text: 'Nikmati ragam kuliner khas Jawa Timur yang autentik.' },
+                    { icon: 'bi bi-camera', title: 'Photo Tour', text: 'Include sesi photo tour di beberapa spot terbaik.' }
+                ],
+                itinerary: [
+                    {
+                        day: 1,
+                        title: 'City Tour 1 Hari — Jelajah & Kuliner',
+                        activities: [
+                            'Penjemputan peserta di meeting point / lokasi yang disepakati',
+                            'Kunjungan ke destinasi ikonik kota (alun-alun, monumen, landmark utama)',
+                            'Sesi photo tour di spot terbaik',
+                            'Makan siang di tempat kuliner khas (termasuk)',
+                            'Sesi singkat belanja oleh-oleh lokal',
+                            'Pengantaran kembali ke meeting point / selesai tour'
+                        ]
+                    }
+                ],
+                includes: [
+                    'Transportasi selama tour (Hiace)',
+                    'Driver Profesional & Berpengalaman',
+                    'BBM untuk perjalanan'
+                ],
+                excludes: [
+                    'Asuransi perjalanan',
+                    'Makan di luar itinerary',
+                    'Pengeluaran pribadi',
+                    'Tip untuk driver & guide'
+                ]
+            },
+
+            'wisata-banyuwangi': {
+                title: 'Banyuwangi Explore',
+                location: 'Banyuwangi, Jawa Timur',
+                duration: 'Menyesuaiakan',
+                capacity: 'Max. 16 Orang',
+                price: 500000,
+                badge: 'Private Tour',
+                images: [
+                    'assets/img/tour/tour-banyuwangi.jpg',
+                    'assets/img/tour/tour-banyuwangi1.jpeg',
+                    'assets/img/tour/tour-banyuwangi2.jpg',
+                    'assets/img/tour/tour-banyuwangi3.jpg'
+                ],
+                description: [
+                    'Jelajahi pesona Banyuwangi: nikmati kejernihan laut dan pasir putih di Tabuhan Island, rasakan suasana magis Hutan De Djawatan yang hijau rimbun, hingga menikmati pengalaman alam liar yang menakjubkan di Sukamade.',
+                    'Cocok untuk pecinta alam, fotografer, dan wisatawan yang ingin menikmati keindahan alam Jawa Timur secara maksimal.'
+                ],
+                highlights: [
+                    { icon: 'fas fa-umbrella-beach', title: 'Tabuhan Island', text: 'Pulau kecil dengan pasir putih dan perairan jernih — cocok untuk snorkeling, berenang, dan bersantai.' },
+                    { icon: 'fas fa-tree', title: 'Hutan De Djawatan', text: 'Hutan rimbun berisi pohon-pohon besar dan jalur trotoar kayu, spot foto estetik dan suasana yang sangat asri.' },
+                    { icon: 'fas fa-water', title: 'Sukamade', text: 'Pantai penyu dengan pengalaman edukatif tentang penangkaran & pelepasan tukik (kegiatan musiman).' }
+                ],
+                itinerary: [
+                    {
+                        day: 1,
+                        title: 'One Day Banyuwangi — Tabuhan, De Djawatan & Sukamade',
+                        activities: [
+                            'Penjemputan peserta di Meeting Point yaitu Ijjo Cafe',
+                            'Perjalanan ke Tabuhan Island: snorkeling & waktu bebas di pantai',
+                            'Makan siang di restoran lokal',
+                            'Kunjungan ke Hutan De Djawatan: jalan santai & sesi foto',
+                            'Perjalanan ke Sukamade: pengamatan penyu / edukasi (jika ada kegiatan)',
+                            'Kembali dan pengantaran ke titik penjemputan'
+                        ]
+                    }
+                ],
+                includes: [
+                    'Transportasi selama tour (Hiace)',
+                    'Driver Profesional & Berpengalaman',
+                    'BBM untuk perjalanan',
+                ],
+                excludes: [
+                    'Asuransi perjalanan',
+                    'Makan di luar itinerary',
+                    'Pengeluaran pribadi',
+                    'Tip untuk driver & guide'
+                ]
+            }
+        };
+
+        // Load product data
+        const product = productsData[productId] || productsData['wisata-yogyakarta'];
+
+        if (productId === "city-tour") {
+            document.getElementById("pricePerText").textContent = "Harga per unit";
+            document.getElementById("participantLabel").textContent = "Jumlah Hari";
+        } else {
+            document.getElementById("pricePerText").textContent = "Harga per orang";
+            document.getElementById("participantLabel").textContent = "Jumlah Peserta";
+        }
+
+        document.getElementById('productTitle').textContent = product.title;
+        document.getElementById('productBadge').textContent = product.badge;
+        document.getElementById('productLocation').textContent = product.location;
+        document.getElementById('productDuration').textContent = product.duration;
+        document.getElementById('productCapacity').textContent = product.capacity;
+
+        // Render gallery dinamis
+        const mainImageEl = document.getElementById('mainImage');
+        const thumbnailContainer = document.getElementById('thumbnailGallery');
+
+        function renderGallery(images = []) {
+            if (!thumbnailContainer) return;
+            thumbnailContainer.innerHTML = '';
+            if (!images.length) {
+                mainImageEl.src = 'assets/img/tour-bali.jpg';
+                return;
+            }
+            mainImageEl.src = images[0];
+            images.forEach((src, i) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Thumbnail ${i + 1}`;
+                img.className = 'thumbnail' + (i === 0 ? ' active' : '');
+                img.onclick = function () { changeMainImage(this); };
+                thumbnailContainer.appendChild(img);
+            });
+        }
+
+        renderGallery(product.images || []);
+
+        // Render Rating
+        const rating = product.rating || 5.0;
+        const reviews = product.reviews || 0;
+        const fullStars = Math.floor(rating);
+        const hasHalf = rating % 1 >= 0.5;
+        let starsHTML = '★'.repeat(fullStars);
+        // if (hasHalf) starsHTML += '½';
+        document.querySelector('.rating-stars-large').textContent = starsHTML;
+        document.querySelector('.rating-number').textContent = rating.toFixed(1);
+        // document.querySelector('.rating-reviews').textContent = `(${reviews} reviews)`;
+
+        // Render Description
+        function renderDescription() {
+            const descSection = document.getElementById('descriptionSection');
+            const descriptions = product.description || [
+                'Deskripsi produk belum tersedia.',
+                'Hubungi kami untuk informasi lebih lanjut.'
+            ];
+
+            let html = '';
+            descriptions.forEach(desc => {
+                html += `<p class="description-text">${desc}</p>`;
+            });
+
+            descSection.querySelector('.section-title').insertAdjacentHTML('afterend', html);
+        }
+
+        // Render Highlights
+        function renderHighlights() {
+            const highlightsGrid = document.querySelector('#highlightsSection .highlights-grid');
+            const highlights = product.highlights || [];
+
+            if (highlights.length === 0) {
+                highlightsGrid.innerHTML = '<p class="text-center text-muted">Informasi highlight belum tersedia.</p>';
+                return;
+            }
+
+            let html = '';
+            highlights.forEach(h => {
+                html += `
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="${h.icon}"></i>
+                        </div>
+                        <div class="highlight-title">${h.title}</div>
+                        <div class="highlight-text">${h.text}</div>
+                    </div>
+                `;
+            });
+            highlightsGrid.innerHTML = html;
+        }
+
+        // Render Itinerary
+        function renderItinerary() {
+            const itinerarySection = document.getElementById('itinerarySection');
+            const itinerary = product.itinerary || [];
+
+            if (itinerary.length === 0) {
+                itinerarySection.querySelector('.section-title').insertAdjacentHTML('afterend',
+                    '<p class="text-center text-muted">Itinerary belum tersedia.</p>');
+                return;
+            }
+
+            let html = '';
+            itinerary.forEach(item => {
+                html += `
+                    <div class="itinerary-item">
+                        <div class="day-number">
+                            <span class="day-label">HARI</span>
+                            <span class="day-num">${item.day}</span>
+                        </div>
+                        <div class="itinerary-content">
+                            <h4>${item.title}</h4>
+                            <ul>
+                                ${item.activities.map(act => `<li>${act}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // NB (catatan) di bawah itinerary
+            html += `
+                <div class="mt-3 p-3" style="background:#fff9e6;border-left:4px solid #f0c040;border-radius:8px;">
+                    <strong>NB:</strong> Rencana perjalanan bisa disesuaikan dengan rencana perjalanan kalian sendiri
+                </div>
+            `;
+
+            itinerarySection.querySelector('.section-title').insertAdjacentHTML('afterend', html);
+        }
+
+        // Render Include/Exclude
+        function renderIncludeExclude() {
+            const includesList = document.querySelector('.include-box .include-exclude-list');
+            const excludesList = document.querySelector('.exclude-box .include-exclude-list');
+
+            const includes = product.includes || [];
+            const excludes = product.excludes || [];
+
+            let includesHTML = '';
+            if (includes.length === 0) {
+                includesHTML = '<li><span class="text-muted">Informasi belum tersedia</span></li>';
+            } else {
+                includes.forEach(item => {
+                    includesHTML += `
+                        <li>
+                            <i class="bi bi-check-lg"></i>
+                            <span>${item}</span>
+                        </li>
+                    `;
+                });
+            }
+            includesList.innerHTML = includesHTML;
+
+            let excludesHTML = '';
+            if (excludes.length === 0) {
+                excludesHTML = '<li><span class="text-muted">Informasi belum tersedia</span></li>';
+            } else {
+                excludes.forEach(item => {
+                    excludesHTML += `
+                        <li>
+                            <i class="bi bi-x-lg"></i>
+                            <span>${item}</span>
+                        </li>
+                    `;
+                });
+            }
+            excludesList.innerHTML = excludesHTML;
+        }
+
+        // Call all render functions
+        renderDescription();
+        renderHighlights();
+        renderItinerary();
+        renderIncludeExclude();
+
+        // Price UI helpers
+        function formatCurrency(val) {
+            return 'Rp ' + val.toLocaleString('id-ID');
+        }
+
+        function formatShort(val) {
+            return formatCurrency(val);
+        }
+
+        // Set price elements dynamically
+        const priceMainEl = document.getElementById('priceMain');
+        const priceOriginalEl = document.getElementById('priceOriginal');
+        const priceDiscountEl = document.getElementById('priceDiscount');
+
+        if (product.price) {
+            priceMainEl.textContent = formatShort(product.price);
+        } else {
+            priceMainEl.textContent = '-';
+        }
+
+        if (product.originalPrice) {
+            priceOriginalEl.style.display = '';
+            priceDiscountEl.style.display = '';
+            priceOriginalEl.textContent = formatCurrency(product.originalPrice);
+
+            // discount text: prefer explicit discount field, otherwise compute percent
+            let discountText = product.discount ? `Hemat ${product.discount}!` : null;
+            if (!discountText) {
+                const pct = Math.round((1 - (product.price / product.originalPrice)) * 100);
+                if (pct > 0) discountText = `Hemat ${pct}%!`;
+            }
+            priceDiscountEl.textContent = discountText || '';
+        } else {
+            priceOriginalEl.style.display = 'none';
+            priceDiscountEl.style.display = 'none';
+        }
+
+        // Quantity Management
+        let quantity = 1;
+        const pricePerPerson = product.price;
+
+        function changeQty(delta) {
+            quantity = Math.max(1, quantity + delta);
+            document.getElementById('quantity').textContent = quantity;
+            updateTotalPrice();
+        }
+
+        function updateTotalPrice() {
+            const total = pricePerPerson * quantity;
+            document.getElementById('totalPrice').textContent = 'Rp ' + total.toLocaleString('id-ID');
+        }
+
+        // Change Main Image
+        function changeMainImage(thumbnail) {
+            document.getElementById('mainImage').src = thumbnail.src;
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        // Book Now Function
+        function bookNow() {
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('departureDate').value;
+
+            if (!name || !phone || !date) {
+                alert('Mohon lengkapi semua data booking!');
+                return;
+            }
+
+            const total = pricePerPerson * quantity;
+            const message = `Halo, saya ingin booking:\n\n` +
+                `Paket: ${product.title}\n` +
+                `Nama: ${name}\n` +
+                `No. HP: ${phone}\n` +
+                `Tanggal: ${date}\n` +
+                `Jumlah Peserta: ${quantity} orang\n` +
+                `Total: Rp ${total.toLocaleString('id-ID')}\n\n` +
+                `Mohon informasi lebih lanjut. Terima kasih!`;
+
+            const whatsappUrl = `https://wa.me/628884907865?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Contact WhatsApp
+        function contactWhatsApp() {
+            const message = `Halo, saya ingin konsultasi tentang paket ${product.title}. Mohon informasi lebih lanjut.`;
+            const whatsappUrl = `https://wa.me/628884907865?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        const departureEl = document.getElementById('departureDate');
+        if (departureEl) {
+            departureEl.setAttribute('min', today);
+            departureEl.value = today;
+        }
+        // Initialize
+        updateTotalPrice();
+    </script>
+</body>
+
+</html>
